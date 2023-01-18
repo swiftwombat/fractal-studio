@@ -9,8 +9,10 @@ class SplashState :
 private:
     // m_variables
 
+
     // m_functions
 
+    
 public:
     // construction
     SplashState();

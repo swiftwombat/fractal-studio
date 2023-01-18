@@ -9,8 +9,10 @@ class AppState :
 private:
     // m_variables
 
+
     // m_functions
 
+    
 public:
     // construction
     AppState();

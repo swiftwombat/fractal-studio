@@ -35,7 +35,7 @@ void App::initDisplay()
 void App::initStates()
 {
     this->m_states.push(new AppState());
-    this->m_states.push(new SplashState());
+    //this->m_states.push(new SplashState());
 }
 
 // functions
