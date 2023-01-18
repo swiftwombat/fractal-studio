@@ -1,1 +1,1 @@
-# fractals-real-time
+# Fractal Studio
