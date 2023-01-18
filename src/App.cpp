@@ -1,5 +1,7 @@
 #include "App.h"
 
+// construction
+
 App::App()
 {
     this->init();
@@ -15,13 +17,28 @@ App::~App()
     }
 }
 
+// m_functions
+
 void App::init()
 {
-    sf::String title = "Fractal Studio";
-    this->m_display = new Display(sf::VideoMode(800, 600), title);
-
-    this->m_states.push(new StudioState());
+    this->initDisplay();
+    this->initStates();
 }
+
+void App::initDisplay()
+{
+    auto title = sf::String("Fractal Studio");
+    auto mode = sf::VideoMode(800, 600);
+    this->m_display = new Display(mode, title);
+}
+
+void App::initStates()
+{
+    this->m_states.push(new AppState());
+    this->m_states.push(new SplashState());
+}
+
+// functions
 
 void App::update()
 {
@@ -31,10 +48,13 @@ void App::update()
 
 void App::run()
 {
-    this->update();
+    while (this->m_display->isOpen())
+    {
+        this->update();
 
-    State* state;
-    if (!this->m_states.empty()) { state = this->m_states.top(); }
+        State* state;
+        if (!this->m_states.empty()) { state = this->m_states.top(); }
 
-    this->m_display->render(state);
+        this->m_display->render(state);
+    }
 }

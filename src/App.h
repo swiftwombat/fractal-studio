@@ -2,7 +2,8 @@
 #define APP_H
 
 #include "Display.h"
-#include "StudioState.h"
+#include "States/AppState.h"
+#include "States/SplashState.h"
 
 #include <stack>
 
@@ -15,6 +16,8 @@ private:
 
     // m_functions
     void init();
+    void initDisplay();
+    void initStates();
 
 public:
     // construction

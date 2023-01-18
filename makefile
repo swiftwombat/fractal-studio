@@ -20,13 +20,17 @@ BINDIR		:= bin
 OBJDIR		:= obj
 SRCDIR		:= src
 
+subdirs = $(filter-out $1,$(sort $(dir $(wildcard $1*/))))
+rfind = $(wildcard $1$2) $(foreach d,$(call subdirs,$1),$(call rfind,$d,$2))
+
+
 RM			:= del /q /f
 MD			:= mkdir
 
 FIXPATH 	 = $(subst /,\,$1)
 EXEPATH		:= $(call FIXPATH,$(BINDIR)/$(EXE))
-SOURCES  	:= $(wildcard $(patsubst %,%/*.cpp, $(SRCDIR)))
-OBJECTS  	:= $(SOURCES:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o)
+SOURCES 	:= $(call rfind,$(SRCDIR)/,*.cpp)
+OBJECTS 	:= $(patsubst $(SRCDIR)/%.cpp, $(OBJDIR)/%.o, $(SOURCES))
 
 all: build
 	./$(EXEPATH)
@@ -35,21 +39,21 @@ all: build
 build: $(BINDIR) $(OBJDIR) $(EXEPATH)
 	@echo Build complete!
 
-$(BINDIR):
-	$(MD) $(BINDIR)
-
-$(OBJDIR):
-	$(MD) $(OBJDIR)
-
 $(EXEPATH): $(OBJECTS) 
 	$(CXX) $(CXXFLAGS) $(INCLUDES) $(OBJECTS) -o $(EXEPATH)  $(LFLAGS)
 
 $(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.cpp
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
-$(OBJDIR)/%.o: $(SRCDIR)/%.cpp
-	@$(MD) $(dir $@)
+.SECONDEXPANSION:
+$(OBJDIR)/%.o: $(SRCDIR)/%.cpp | $$(@D)
 	@$(CXX) $(CXXFLAGS) $(INCLUDES) -c $< -o $@
+
+$(BINDIR):
+	@$(MD) $@
+
+$(OBJDIR):
+	@$(MD) $(subst /,\,$(patsubst %/, %, $(sort $(dir $(OBJECTS)))))
 
 .PHONY: clean
 clean:

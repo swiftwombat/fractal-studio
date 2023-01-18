@@ -1,5 +1,6 @@
 #include "Display.h"
 
+// construction
 
 Display::Display(sf::VideoMode mode, sf::String &title)
     : sf::RenderWindow(mode, title)
@@ -12,11 +13,14 @@ Display::~Display()
 
 }
 
+// m_functions
 
 void Display::init()
 {
     
 }
+
+// functions
 
 void Display::update()
 {

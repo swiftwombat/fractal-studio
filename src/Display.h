@@ -1,7 +1,7 @@
 #ifndef DISPLAY_H
 #define DISPLAY_H
 
-#include "State.h"
+#include "States/State.h"
 
 class Display : 
     public sf::RenderWindow

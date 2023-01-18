@@ -1,5 +1,7 @@
 #include "State.h"
 
+// construction
+
 State::State()
 {
 

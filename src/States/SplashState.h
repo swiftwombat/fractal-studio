@@ -1,9 +1,9 @@
-#ifndef STUDIOSTATE_H
-#define STUDIOSTATE_H
+#ifndef SPLASHSTATE_H
+#define SPLASHSTATE_H
 
 #include "State.h"
 
-class StudioState : 
+class SplashState : 
     public State
 {
 private:
@@ -13,8 +13,8 @@ private:
 
 public:
     // construction
-    StudioState();
-    virtual ~StudioState();
+    SplashState();
+    virtual ~SplashState();
 
     // functions
     void update();
