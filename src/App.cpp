@@ -43,7 +43,10 @@ void App::initStates()
 void App::update()
 {
     this->m_display->update();
-    if (!this->m_states.empty()) { this->m_states.top()->update(); }
+    sf::Vector2f& mpos = this->m_display->mpos();
+
+    if (!this->m_states.empty()) 
+        this->m_states.top()->update(mpos);
 }
 
 void App::run()
@@ -53,7 +56,8 @@ void App::run()
         this->update();
 
         State* state;
-        if (!this->m_states.empty()) { state = this->m_states.top(); }
+        if (!this->m_states.empty()) 
+            state = this->m_states.top();
 
         this->m_display->render(state);
     }

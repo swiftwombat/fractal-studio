@@ -3,16 +3,24 @@
 
 #include "SFML/Graphics.hpp"
 
+#include <vector>
+
 class State
 {
+    private:
+    // m_variables
+    bool m_isEnded;
+
 public:
     // construction
     State();
     virtual ~State();
 
     // functions
-    virtual void update() = 0;
-    virtual void render(sf::RenderTarget* target = nullptr) = 0;
+    const bool& isEnded() const;
+
+    virtual void update(sf::Vector2f& mpos) = 0;
+    virtual void render(sf::RenderTarget& target) = 0;
 };
 
 #endif

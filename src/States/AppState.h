@@ -2,13 +2,15 @@
 #define APPSTATE_H
 
 #include "State.h"
+#include "../Projection.h"
 
 class AppState : 
     public State
 {
 private:
     // m_variables
-
+    std::vector<Projection*> m_projections;
+    Projection* m_selectedProjection;
 
     // m_functions
 
@@ -19,8 +21,8 @@ public:
     virtual ~AppState();
 
     // functions
-    void update();
-    void render(sf::RenderTarget* target = nullptr);
+    void update(sf::Vector2f& mpos);
+    void render(sf::RenderTarget& target);
 };
 
 #endif

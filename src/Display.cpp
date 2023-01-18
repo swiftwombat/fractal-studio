@@ -17,13 +17,20 @@ Display::~Display()
 
 void Display::init()
 {
-    
+    this->setKeyRepeatEnabled(false);
 }
 
 // functions
 
+sf::Vector2f& Display::mpos()
+{
+    return this->m_mpos;
+}
+
 void Display::update()
 {
+    this->m_mpos = this->mapPixelToCoords(sf::Mouse::getPosition(*this));
+
     while (this->pollEvent(this->m_event))
     {
         if (this->m_event.type == sf::Event::Closed)
@@ -37,6 +44,6 @@ void Display::update()
 void Display::render(State *state)
 {
     this->clear();
-    state->render(this);
+    state->render(*this);
     this->display();
 }
