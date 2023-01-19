@@ -19,7 +19,7 @@ public:
     // functions
     const bool& isEnded() const;
 
-    virtual void update(sf::Vector2f& mpos) = 0;
+    virtual void update(const sf::Vector2f& mpos) = 0;
     virtual void render(sf::RenderTarget& target) = 0;
 };
 

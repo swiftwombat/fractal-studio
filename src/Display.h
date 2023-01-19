@@ -20,7 +20,7 @@ public:
     virtual ~Display();
 
     // functions
-    sf::Vector2f& mpos();
+    const sf::Vector2f& mpos() const;
 
     void update();
     void render(State* state);

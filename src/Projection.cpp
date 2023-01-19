@@ -22,7 +22,7 @@ void Projection::init()
 
 // functions
 
-void Projection::update(sf::Vector2f& mpos)
+void Projection::update(const sf::Vector2f& mpos)
 {
     sf::Vector2f offset;
     offset.x = mpos.x - this->getGlobalBounds().left - this->getOrigin().x ;

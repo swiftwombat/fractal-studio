@@ -19,7 +19,7 @@ public:
     virtual ~Projection();
 
     // functions
-    void update(sf::Vector2f& mpos);
+    void update(const sf::Vector2f& mpos);
     void render(sf::RenderTarget& target);
 };
 

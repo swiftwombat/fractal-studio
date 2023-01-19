@@ -10,7 +10,7 @@ class AppState :
 private:
     // m_variables
     std::vector<Projection*> m_projections;
-    Projection* m_selectedProjection;
+    Projection* m_current;
 
     // m_functions
 
@@ -21,7 +21,7 @@ public:
     virtual ~AppState();
 
     // functions
-    void update(sf::Vector2f& mpos);
+    void update(const sf::Vector2f& mpos);
     void render(sf::RenderTarget& target);
 };
 

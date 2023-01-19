@@ -22,7 +22,7 @@ void Display::init()
 
 // functions
 
-sf::Vector2f& Display::mpos()
+const sf::Vector2f& Display::mpos() const
 {
     return this->m_mpos;
 }
@@ -44,6 +44,6 @@ void Display::update()
 void Display::render(State *state)
 {
     this->clear();
-    state->render(*this);
+    if(state) { state->render(*this); }
     this->display();
 }
