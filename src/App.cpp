@@ -40,12 +40,12 @@ void App::initStates()
 
 // functions
 
-void App::update()
+void App::update(State* state)
 {
-    this->m_display->update();
+    this->m_display->update(state);
     const sf::Vector2f& mpos = this->m_display->mpos();
-
-    if (!this->m_states.empty()) { this->m_states.top()->update(mpos); }
+    
+    if (state) { state->update(mpos); }
 }
 
 void App::run()
@@ -55,7 +55,7 @@ void App::run()
         State* state = nullptr;
         if (!this->m_states.empty()) { state = this->m_states.top(); }
 
-        this->update();
+        this->update(state);
         this->m_display->render(state);
     }
 }

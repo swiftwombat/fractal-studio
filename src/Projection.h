@@ -2,24 +2,27 @@
 #define PROJECTION_H
 
 #include "SFML/Graphics.hpp"
+#include <array>
 
 class Projection : 
     public sf::RectangleShape
 {
 private:
     // m_variables
-
+    sf::RectangleShape* m_centerdot;
 
     // m_functions
     void init();
     
 public:
     // construction
-    Projection(sf::Vector2f vector);
+    Projection(const sf::Vector2f& size);
     virtual ~Projection();
 
     // functions
-    void update(const sf::Vector2f& mpos);
+    bool contains(const sf::Vector2f& point);
+
+    void update();
     void render(sf::RenderTarget& target);
 };
 

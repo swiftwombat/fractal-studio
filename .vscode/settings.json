@@ -81,6 +81,7 @@
         "stack": "cpp",
         "deque": "cpp",
         "ranges": "cpp",
-        "span": "cpp"
+        "span": "cpp",
+        "array": "cpp"
     }
 }

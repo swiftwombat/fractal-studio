@@ -27,21 +27,27 @@ const sf::Vector2f& Display::mpos() const
     return this->m_mpos;
 }
 
-void Display::update()
+void Display::checkEvents(sf::Event& e)
+{
+    if (e.type == sf::Event::Closed)
+        this->close();
+
+    if ((e.type == sf::Event::KeyPressed) && (e.key.code == sf::Keyboard::Escape))
+        this->close();
+}
+
+void Display::update(State* state)
 {
     this->m_mpos = this->mapPixelToCoords(sf::Mouse::getPosition(*this));
 
     while (this->pollEvent(this->m_event))
     {
-        if (this->m_event.type == sf::Event::Closed)
-            this->close();
-
-        if ((this->m_event.type == sf::Event::KeyPressed) && (this->m_event.key.code == sf::Keyboard::Escape))
-            this->close();
+        this->checkEvents(this->m_event);
+        if (state) { state->checkEvents(this->m_event, this->m_mpos); }
     }
 }
 
-void Display::render(State *state)
+void Display::render(State* state)
 {
     this->clear();
     if(state) { state->render(*this); }

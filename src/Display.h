@@ -22,7 +22,8 @@ public:
     // functions
     const sf::Vector2f& mpos() const;
 
-    void update();
+    void checkEvents(sf::Event& event);
+    void update(State* state);
     void render(State* state);
 };
 
