@@ -9,7 +9,6 @@ class Projection :
 {
 private:
     // m_variables
-    sf::RectangleShape* m_centerdot;
 
     // m_functions
     void init();
