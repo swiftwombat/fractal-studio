@@ -10,7 +10,7 @@ AppState::AppState()
 
 AppState::~AppState()
 {
-    delete this->m_current;
+    delete this->m_curr_proj;
     for ( auto p : this->m_projections ) { delete p; }
 }
 
@@ -18,8 +18,19 @@ AppState::~AppState()
 
 void AppState::init()
 {
-    this->m_dragging, this->m_rotating, this->m_scaling = false;
-    this->m_current = nullptr;
+    this->m_curr_proj = nullptr;
+}
+
+Projection* AppState::getProjectionAt(const sf::Vector2f& mpos)
+{
+    Projection* p_proj;
+    for (auto p : this->m_projections) 
+    {
+        if (!p->contains(mpos)) { continue; }
+        p_proj = p;
+        break;
+    }
+    return p_proj;
 }
 
 // functions
@@ -27,48 +38,61 @@ void AppState::init()
 
 void AppState::checkEvents(sf::Event& e, const sf::Vector2f& mpos)
 {
-    if (e.type == sf::Event::KeyPressed && e.key.code == sf::Keyboard::Space) // add new projection
+    if (e.type == sf::Event::MouseButtonReleased && e.mouseButton.button == sf::Mouse::Left && !m_curr_proj) // add new projection
     {
-        auto proj = new Projection(sf::Vector2f(100.f, 100.f));
-        proj->setPosition(mpos);
-        this->m_projections.push_back(proj);
-    }
-}
-
-void AppState::update(const sf::Vector2f& mpos)
-{
-    if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) // moving projection
-    {
-        if (!this->m_dragging)
-        {
-            for (auto proj : this->m_projections) 
-            {
-                if (!proj->contains(mpos)) { continue; }
-                this->offset.x = mpos.x - proj->getGlobalBounds().left - 45 / 2.173f - proj->getOrigin().x;
-                this->offset.y = mpos.y - proj->getGlobalBounds().top - 45 / 2.173f - proj->getOrigin().x;
-                this->m_current = proj;
-                this->m_dragging = true;
-            }
-        }
-    }
-    else
-    {
-        this->m_current = nullptr;
-        this->m_dragging = false;
+        auto p_proj = new Projection(sf::Vector2f(100.f, 100.f));
+        p_proj->setPosition(mpos);
+        this->m_projections.push_back(p_proj);
     }
 
-    if (sf::Mouse::isButtonPressed(sf::Mouse::Right)) // add new projection
+    if (e.type == sf::Event::MouseButtonPressed && e.mouseButton.button == sf::Mouse::Right) // delete projection
     {
         auto i = this->m_projections.begin();
         while (i != this->m_projections.end()) 
         {
-            auto proj = *i;
-            if (proj->contains(mpos)) { i = this->m_projections.erase(i); }
+            auto p_proj = *i;
+            if (p_proj->contains(mpos)) { this->m_projections.erase(i); break; }
             else                      { ++i; }
         }
     }
 
-    if(this->m_current && this->m_dragging) { this->m_current->setPosition(mpos.x - offset.x, mpos.y - offset.y); }
+    if (e.type == sf::Event::MouseWheelScrolled) // rotate projection
+    {
+        Projection* p_proj = getProjectionAt(mpos);
+        auto ds = e.mouseWheelScroll.delta;
+        
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift)) 
+        {  
+            if (ds > 0) { p_proj->scale(1.1f, 1.1f); }
+            else        { p_proj->scale(0.9f, 0.9f); }
+        }
+        else { p_proj->rotate(2.5f * ds); }
+    }
+}
+
+void AppState::update(const sf::Vector2f& mpos)
+{ 
+    if (!sf::Mouse::isButtonPressed(sf::Mouse::Left)) 
+    { 
+        this->m_curr_proj = nullptr; 
+        return; 
+    }
+
+    if (!this->m_curr_proj)
+    {
+        for (auto proj : this->m_projections) 
+        {
+            if (!proj->contains(mpos)) { continue; }
+            this->m_prev_mpos = mpos;
+            this->m_curr_proj = proj;
+            break;
+        }
+    }
+    else
+    { 
+        this->m_curr_proj->move(mpos - m_prev_mpos);
+        this->m_prev_mpos = mpos;
+    }
 }
 
 void AppState::render(sf::RenderTarget& target)

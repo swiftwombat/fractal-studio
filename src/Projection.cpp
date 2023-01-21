@@ -19,7 +19,6 @@ void Projection::init()
 {
     this->setFillColor(sf::Color(132, 128, 128));
     this->setOrigin(this->getSize().x / 2.f, this->getSize().y / 2.f);
-    this->setRotation(45.f);
 
     this->m_centerdot = new sf::RectangleShape(sf::Vector2f(1,1));
     this->m_centerdot->setFillColor(sf::Color().Red);

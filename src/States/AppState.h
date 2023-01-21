@@ -3,7 +3,6 @@
 
 #include "State.h"
 #include "../Projection.h"
-#include <cmath>
 
 class AppState : 
     public State
@@ -11,15 +10,12 @@ class AppState :
 private:
     // m_variables
     std::vector<Projection*> m_projections;
-    Projection* m_current;
-    sf::Vector2f offset;
-
-    bool m_dragging;
-    bool m_rotating;
-    bool m_scaling;
+    Projection* m_curr_proj;
+    sf::Vector2f m_prev_mpos;
 
     // m_functions
     void init();
+    Projection* getProjectionAt(const sf::Vector2f& mpos);
     
 public:
     // construction
