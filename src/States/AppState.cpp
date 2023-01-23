@@ -36,11 +36,11 @@ Projection* AppState::getProjectionAt(const sf::Vector2f& mpos)
 // functions
 
 
-void AppState::checkEvents(sf::Event& e, const sf::Vector2f& mpos)
+void AppState::checkEvents(const sf::Event& e, const sf::Vector2f& mpos)
 {
     if (e.type == sf::Event::MouseButtonReleased && e.mouseButton.button == sf::Mouse::Left && !m_curr_proj) // add new projection
     {
-        auto p_proj = new Projection(sf::Vector2f(100.f, 100.f));
+        auto p_proj = new Projection(sf::Vector2f(160.f, 120.f));
         p_proj->setPosition(mpos);
         this->m_projections.push_back(p_proj);
     }

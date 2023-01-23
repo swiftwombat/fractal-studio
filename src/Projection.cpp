@@ -17,7 +17,7 @@ Projection::~Projection()
 
 void Projection::init()
 {
-    this->setFillColor(sf::Color(132, 128, 128));
+    this->m_screencap.create(1600, 1200);
     this->setOrigin(this->getSize().x / 2.f, this->getSize().y / 2.f);
 }
 

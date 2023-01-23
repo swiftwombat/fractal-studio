@@ -16,13 +16,13 @@ private:
 
 public:
     // construction
-    Display(sf::VideoMode mode, sf::String& title);
+    Display(const sf::VideoMode mode, const sf::String& title);
     virtual ~Display();
 
     // functions
     const sf::Vector2f& mpos() const;
 
-    void checkEvents(sf::Event& event);
+    void checkEvents(const sf::Event& event);
     void update(State* state);
     void render(State* state);
 };

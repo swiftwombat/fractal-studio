@@ -23,7 +23,7 @@ public:
     virtual ~AppState();
 
     // functions
-    void checkEvents(sf::Event& event, const sf::Vector2f& mpos);
+    void checkEvents(const sf::Event& event, const sf::Vector2f& mpos);
     void update(const sf::Vector2f& mpos);
     void render(sf::RenderTarget& target);
 };

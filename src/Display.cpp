@@ -2,7 +2,7 @@
 
 // construction
 
-Display::Display(sf::VideoMode mode, sf::String &title)
+Display::Display(const sf::VideoMode mode, const sf::String &title)
     : sf::RenderWindow(mode, title)
 {
     this->init();
@@ -27,7 +27,7 @@ const sf::Vector2f& Display::mpos() const
     return this->m_mpos;
 }
 
-void Display::checkEvents(sf::Event& e)
+void Display::checkEvents(const sf::Event& e)
 {
     if (e.type == sf::Event::Closed)
         this->close();
@@ -49,7 +49,7 @@ void Display::update(State* state)
 
 void Display::render(State* state)
 {
-    this->clear();
+    this->clear(sf::Color(2u, 2u, 2u));
     if(state) { state->render(*this); }
     this->display();
 }

@@ -3,7 +3,6 @@
 
 #include "Display.h"
 #include "States/AppState.h"
-#include "States/SplashState.h"
 
 #include <stack>
 
@@ -19,6 +18,8 @@ private:
     void init();
     void initDisplay();
     void initStates();
+    
+    void update(State* state);
 
 public:
     // construction
@@ -26,7 +27,6 @@ public:
     virtual ~App();
 
     // functions
-    void update(State* state);
     void run();
 };
 

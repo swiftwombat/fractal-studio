@@ -9,6 +9,7 @@ class Projection :
 {
 private:
     // m_variables
+    sf::Texture m_screencap;
 
     // m_functions
     void init();
