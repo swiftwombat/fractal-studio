@@ -28,13 +28,12 @@ void App::init()
 void App::initDisplay()
 {
     auto title = sf::String("Fractal Studio");
-    auto mode = sf::VideoMode(1600, 1200);
-    this->m_display = new Display(mode, title);
+    this->m_display = new Display(title);
 }
 
 void App::initStates()
 {
-    this->m_states.push(new AppState());
+    this->m_states.push(new AppState(*this->m_display));
 }
 
 void App::update(State* state)

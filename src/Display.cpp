@@ -2,7 +2,7 @@
 
 // construction
 
-Display::Display(const sf::VideoMode mode, const sf::String &title)
+Display::Display(const sf::String &title, const sf::VideoMode mode)
     : sf::RenderWindow(mode, title)
 {
     this->init();

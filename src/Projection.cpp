@@ -29,12 +29,12 @@ bool Projection::contains(const sf::Vector2f& point)
     return this->getLocalBounds().contains(tpoint);
 }
 
-void Projection::update()
+void Projection::update(const sf::Texture* screencap)
 {
-    
+    this->setTexture(screencap, false);
 }
 
 void Projection::render(sf::RenderTarget& target)
 {
-    target.draw(*this);
+    target.draw(*this, sf::BlendAdd);
 }

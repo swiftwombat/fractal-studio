@@ -16,7 +16,7 @@ private:
 
 public:
     // construction
-    Display(const sf::VideoMode mode, const sf::String& title);
+    Display(const sf::String& title, const sf::VideoMode mode = sf::VideoMode().getFullscreenModes()[0]);
     virtual ~Display();
 
     // functions

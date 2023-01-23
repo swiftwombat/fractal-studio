@@ -2,6 +2,7 @@
 #define APPSTATE_H
 
 #include "State.h"
+#include "../Display.h"
 #include "../Projection.h"
 
 class AppState : 
@@ -9,9 +10,12 @@ class AppState :
 {
 private:
     // m_variables
-    std::vector<Projection*> m_projections;
+    const Display& m_display;
+
     Projection* m_curr_proj;
+    std::vector<Projection*> m_projections;
     sf::Vector2f m_prev_mpos;
+    sf::Texture* m_screencap;
 
     // m_functions
     void init();
@@ -19,7 +23,7 @@ private:
     
 public:
     // construction
-    AppState();
+    AppState(const Display& display);
     virtual ~AppState();
 
     // functions

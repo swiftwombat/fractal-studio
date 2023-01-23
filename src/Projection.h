@@ -22,7 +22,7 @@ public:
     // functions
     bool contains(const sf::Vector2f& point);
 
-    void update();
+    void update(const sf::Texture* screencap);
     void render(sf::RenderTarget& target);
 };
 
