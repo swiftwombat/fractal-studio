@@ -42,7 +42,5 @@ void Projection::update(const sf::Texture* screencap)
 
 void Projection::render(sf::RenderTarget& target)
 {
-    sf::Shader shader;
-    shader.setUniform("color", sf::Glsl::Vec4(sf::Color::White));
     target.draw(*this, sf::BlendAdd);
 }
