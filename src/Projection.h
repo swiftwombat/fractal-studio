@@ -9,7 +9,6 @@ class Projection :
 {
 private:
     // m_variables
-    sf::Texture m_screencap;
 
     // m_functions
     void init();
@@ -21,6 +20,7 @@ public:
 
     // functions
     bool contains(const sf::Vector2f& point);
+    void scale(const sf::Vector2f& operands);
 
     void update(const sf::Texture* screencap);
     void render(sf::RenderTarget& target);

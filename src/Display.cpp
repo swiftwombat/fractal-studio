@@ -49,7 +49,7 @@ void Display::update(State* state)
 
 void Display::render(State* state)
 {
-    this->clear(sf::Color(2u, 2u, 2u));
+    this->clear(sf::Color(1u, 1u, 1u));
     if(state) { state->render(*this); }
     this->display();
 }

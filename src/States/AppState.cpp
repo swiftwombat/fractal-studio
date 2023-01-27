@@ -42,7 +42,7 @@ Projection* AppState::getProjectionAt(const sf::Vector2f& mpos)
 
 void AppState::checkEvents(const sf::Event& e, const sf::Vector2f& mpos)
 {
-    if (e.type == sf::Event::MouseButtonReleased && e.mouseButton.button == sf::Mouse::Left && !m_curr_proj) // add new projection
+    if (e.type == sf::Event::KeyPressed && e.key.code == sf::Keyboard::Space) // add new projection
     {
         auto p_proj = new Projection(sf::Vector2f(this->m_display.getSize()) / 6.f);
         p_proj->setPosition(mpos);
@@ -56,7 +56,7 @@ void AppState::checkEvents(const sf::Event& e, const sf::Vector2f& mpos)
         {
             auto p_proj = *i;
             if (p_proj->contains(mpos)) { this->m_projections.erase(i); break; }
-            else                      { ++i; }
+            else                        { ++i; }
         }
     }
 
@@ -66,12 +66,9 @@ void AppState::checkEvents(const sf::Event& e, const sf::Vector2f& mpos)
         auto ds = e.mouseWheelScroll.delta;
         if (p_proj)
         {
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift)) 
-            {  
-                if (ds > 0) { p_proj->scale(1.1f, 1.1f); }
-                else        { p_proj->scale(0.9f, 0.9f); }
-            }
-            else { p_proj->rotate(2.5f * ds); }
+            bool scaling = sf::Keyboard::isKeyPressed(sf::Keyboard::LShift);
+            if (scaling) { p_proj->scale(sf::Vector2f(0.1f, 0.1f) * ds); }
+            else         { p_proj->rotate(2.5f * ds); }
         }
     }
 }
