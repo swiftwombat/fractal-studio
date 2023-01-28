@@ -23,7 +23,7 @@ public:
     void scale(const sf::Vector2f& operands);
 
     void update(const sf::Texture* screencap);
-    void render(sf::RenderTarget& target);
+    void render(sf::RenderTarget& target, const sf::RenderStates& states = sf::BlendAdd);
 };
 
 #endif

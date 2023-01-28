@@ -40,7 +40,7 @@ void Projection::update(const sf::Texture* screencap)
     this->setTexture(screencap, false);
 }
 
-void Projection::render(sf::RenderTarget& target)
+void Projection::render(sf::RenderTarget& target, const sf::RenderStates& states)
 {
-    target.draw(*this, sf::BlendAdd);
+    target.draw(*this, states);
 }
