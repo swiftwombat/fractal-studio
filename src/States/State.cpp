@@ -4,7 +4,7 @@
 
 State::State()
 {
-    this->m_isEnded = false;
+    m_isEnded = false;
 }
 
 State::~State()
@@ -14,5 +14,5 @@ State::~State()
 
 const bool& State::isEnded() const
 {
-    return this->m_isEnded;
+    return m_isEnded;
 }

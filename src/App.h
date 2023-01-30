@@ -11,7 +11,6 @@ class App
 private:
     // m_variables
     Display* m_display;
-    sf::Event m_event;
     std::stack<State*> m_states;
 
     // m_functions

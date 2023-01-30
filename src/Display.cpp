@@ -24,7 +24,7 @@ void Display::init()
 
 const sf::Vector2f& Display::mpos() const
 {
-    return this->m_mpos;
+    return m_mpos;
 }
 
 void Display::checkEvents(const sf::Event& e)
@@ -38,18 +38,18 @@ void Display::checkEvents(const sf::Event& e)
 
 void Display::update(State* state)
 {
-    this->m_mpos = this->mapPixelToCoords(sf::Mouse::getPosition(*this));
+    m_mpos = mapPixelToCoords(sf::Mouse::getPosition(*this));
 
-    while (this->pollEvent(this->m_event))
+    while (this->pollEvent(m_event))
     {
-        this->checkEvents(this->m_event);
-        if (state) { state->checkEvents(this->m_event, this->m_mpos); }
+        this->checkEvents(m_event);
+        if (state) { state->checkEvents(m_event, m_mpos); }
     }
 }
 
 void Display::render(State* state)
 {
-    this->clear(sf::Color(1u, 1u, 1u));
+    this->clear(sf::Color(2u, 2u, 2u));
     if(state) { state->render(*this); }
     this->display();
 }

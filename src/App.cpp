@@ -9,11 +9,11 @@ App::App()
 
 App::~App()
 {
-    delete this->m_display;
-    while (!this->m_states.empty())
+    delete m_display;
+    while (!m_states.empty())
     {
-        delete this->m_states.top();
-        this->m_states.pop();
+        delete m_states.top();
+        m_states.pop();
     }
 }
 
@@ -28,18 +28,18 @@ void App::init()
 void App::initDisplay()
 {
     auto title = sf::String("Fractal Studio");
-    this->m_display = new Display(title);
+    m_display = new Display(title);
 }
 
 void App::initStates()
 {
-    this->m_states.push(new AppState(*this->m_display));
+    m_states.push(new AppState(*m_display));
 }
 
 void App::update(State* state)
 {
-    this->m_display->update(state);
-    const sf::Vector2f& mpos = this->m_display->mpos();
+    m_display->update(state);
+    const sf::Vector2f& mpos = m_display->mpos();
     
     if (state) { state->update(mpos); }
 }
@@ -48,12 +48,12 @@ void App::update(State* state)
 
 void App::run()
 {
-    while (this->m_display->isOpen())
+    while (m_display->isOpen())
     {
         State* state = nullptr;
-        if (!this->m_states.empty()) { state = this->m_states.top(); }
+        if (!m_states.empty()) { state = m_states.top(); }
 
         this->update(state);
-        this->m_display->render(state);
+        m_display->render(state);
     }
 }

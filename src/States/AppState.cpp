@@ -68,7 +68,7 @@ void AppState::checkEvents(const sf::Event& e, const sf::Vector2f& mpos)
         {
             bool scaling = sf::Keyboard::isKeyPressed(sf::Keyboard::LShift);
             if (scaling) { p_proj->scale(sf::Vector2f(0.1f, 0.1f) * ds); }
-            else         { p_proj->rotate(2.5f * ds); }
+            else         { p_proj->rotate(1.5f * ds); }
         }
     }
 }
