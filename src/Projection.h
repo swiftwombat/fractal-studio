@@ -4,12 +4,12 @@
 #include "SFML/Graphics.hpp"
 #include <array>
 
+
+/// @brief 
 class Projection : 
     public sf::RectangleShape
 {
 private:
-    // m_variables
-
     // m_functions
     void init();
     
