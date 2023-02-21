@@ -27,7 +27,7 @@ void App::init()
 
 void App::initDisplay()
 {
-    auto title = sf::String("Fractal Studio");
+    auto title = sf::String("Simple Fractals");
     m_display = new Display(title);
 }
 

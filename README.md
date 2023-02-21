@@ -1,1 +1,1 @@
-# Fractal Studio
+# Simple Fractals
