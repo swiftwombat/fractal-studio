@@ -17,6 +17,9 @@ Display::~Display()
 
 void Display::init()
 {
+    sf::Image icon;
+    icon.loadFromFile("./img/icon.png");
+    this->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
     this->setKeyRepeatEnabled(false);
 }
 
