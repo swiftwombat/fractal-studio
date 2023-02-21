@@ -1,4 +1,4 @@
-# Simple Fractals
+# <img src="img/icon.png" height=24> Simple Fractals
 
 A program to create interactable fractals in real-time, built in C++ using the SFML library.
 
