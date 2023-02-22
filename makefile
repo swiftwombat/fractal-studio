@@ -15,7 +15,7 @@ CXXFLAGS	:= -std=c++17 -Wall -Wextra -g
 LFLAGS 		 = -L"C:\SFML\lib" -lsfml-graphics-s -lsfml-window-s -lsfml-system-s -lopengl32 -lfreetype -lwinmm -lgdi32 -mwindows
 INCLUDES 	:= -I"C:\SFML\include" -DSFML_STATIC
 
-EXE			:= FractalStudio.exe
+EXE			:= SimpleFractals.exe
 BINDIR		:= bin
 OBJDIR		:= obj
 SRCDIR		:= src
