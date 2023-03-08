@@ -3,7 +3,7 @@
 // construction
 
 Display::Display(const sf::String &title, const sf::VideoMode mode)
-    : sf::RenderWindow(mode, title)
+    : sf::RenderWindow(mode, title, sf::Style::Fullscreen)
 {
     this->init();
 }
