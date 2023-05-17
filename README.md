@@ -1,4 +1,4 @@
-# <img src="img/icon.png" height=24> Simple Fractals
+# <img src="https://github.com/swiftwombat/simple-fractals/assets/61484083/1ce32f28-db3b-4eb2-8c11-1171f53bb8d0" height=24> Simple Fractals
 
 A program to create interactable fractals in real-time, built in C++ using the SFML library.
 
@@ -16,8 +16,8 @@ Once a sub-screen is created, it can be translated with left-click and drag. The
 
 ## Example Fractals
 <div>
-  <img src="img/f1.png" style="width: 24%;">
-  <img src="img/f2.png" style="width: 24%;">
-  <img src="img/f3.png" style="width: 24%;">
-  <img src="img/f4.png" style="width: 24%;">
+  <img src="https://github.com/swiftwombat/simple-fractals/assets/61484083/e2a09e74-179a-4849-b96c-28a52d17c0f7" style="width: 24%;">
+  <img src="https://github.com/swiftwombat/simple-fractals/assets/61484083/6b2d18dd-f04e-4083-9045-e527f3dd3ee6" style="width: 24%;">
+  <img src="https://github.com/swiftwombat/simple-fractals/assets/61484083/9bb2283d-b28b-4d0a-89bc-4e766177d50c" style="width: 24%;">
+  <img src="https://github.com/swiftwombat/simple-fractals/assets/61484083/d8ab242a-6d14-45db-96cc-4812a878ec69" style="width: 24%;">
 </div>
